@@ -141,9 +141,9 @@ define(['angular'], function (angular) {
                         bgSelector.onSelectCallback(value, label);
                     }
                 });
-                // if ((bgOption.value + '') === bgSelector.getValue()) {
-                //     bgSelector.setSelectorLabel(bgOption.label);
-                // }
+                if ((bgOption.value + '') === bgSelector.getValue()) {
+                    bgSelector.setSelectorLabel(bgOption.label);
+                }
 
                 // listen to the change event to set the label of the selector
                 $scope.$on('bgs:change', function (event, value) {
