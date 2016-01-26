@@ -4,7 +4,6 @@
  */
 
 define(['angular'], function (angular) {
-
     var bgs = angular.module('bg.selector', []);
 
     bgs.directive('bgSelector', ['$document', '$parse', function ($document, $parse) {
@@ -29,26 +28,29 @@ define(['angular'], function (angular) {
         };
         // Runs during compile
         return {
-            controller: function ($scope, $element, $attrs, $transclude) {
-                var ctrl = this;
-                ctrl.options = [];
-                ctrl.open = false;
-                // hide choice list
-                ctrl.hideChoiceList = function () {
+            scope: {},
+            controller: [
+                '$scope', '$element', '$attrs', '$transclude',
+                function ($scope, $element, $attrs, $transclude) {
+                    var ctrl = this;
+                    ctrl.options = [];
                     ctrl.open = false;
-                };
-                // toggle the status of choice list
-                ctrl.toggleChoiceList = function () {
-                    ctrl.open = !ctrl.open;
-                };
-                // set the label of selector
-                ctrl.setSelectorLabel = function (label) {
-                    ctrl.label = label;
-                };
-                ctrl.addOption = function (value) {
-                    ctrl.options.push(value);
-                };
-            },
+                    // hide choice list
+                    ctrl.hideChoiceList = function () {
+                        ctrl.open = false;
+                    };
+                    // toggle the status of choice list
+                    ctrl.toggleChoiceList = function () {
+                        ctrl.open = !ctrl.open;
+                    };
+                    // set the label of selector
+                    ctrl.setSelectorLabel = function (label) {
+                        ctrl.label = label;
+                    };
+                    ctrl.addOption = function (value) {
+                        ctrl.options.push(value);
+                    };
+                }],
             controllerAs: 'selector',
             require: ['bgSelector', 'ngModel'],
             restrict: 'E',
@@ -85,7 +87,7 @@ define(['angular'], function (angular) {
                     $scope.$apply();
                 });
                 // watch ngModel to set the label
-                $scope.$watch(iAttrs.ngModel, function (value) {
+                $scope.$parent.$watch(iAttrs.ngModel, function (value) {
                     // reset the selector
                     if (!isExist(value, selector.options)) {
                         selector.setSelectorLabel(placeholder);
@@ -114,11 +116,13 @@ define(['angular'], function (angular) {
         // Runs during compile
         return {
             priority: -1,
-            controller: function ($scope, $element, $attrs, $transclude) {
-                var ctrl = this;
-                ctrl.value = $parse($attrs.value)($scope);
-                ctrl.label = $parse($attrs.label)($scope);
-            },
+            controller: [
+                '$scope', '$element', '$attrs', '$transclude',
+                function ($scope, $element, $attrs, $transclude) {
+                    var ctrl = this;
+                    ctrl.value = $parse($attrs.value)($scope);
+                    ctrl.label = $parse($attrs.label)($scope);
+                }],
             require: ['bgOption', '^bgSelector'],
             restrict: 'E',
             template: '<div class="bg-selector-choice" ng-transclude></div>',
@@ -141,7 +145,7 @@ define(['angular'], function (angular) {
                         bgSelector.onSelectCallback(value, label);
                     }
                 });
-                if ((bgOption.value + '') === bgSelector.getValue()) {
+                if (bgOption.value === bgSelector.getValue()) {
                     bgSelector.setSelectorLabel(bgOption.label);
                 }
 
