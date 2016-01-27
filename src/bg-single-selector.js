@@ -1,6 +1,6 @@
 /**
  * @file 单选下拉框组件
- * @author linbin02@baidu.com
+ * @author lakb248@gmail.com
  */
 
 define(['angular'], function (angular) {
@@ -10,7 +10,7 @@ define(['angular'], function (angular) {
 
         /**
          * whether the value exist in the options
-         * @author linbin02@baidu.com
+         * @author lakb248@gmail.com
          * @param  {string}  value   the value
          * @param  {string}  options the options
          * @return {boolean} retult  the result
@@ -123,12 +123,13 @@ define(['angular'], function (angular) {
                     ctrl.value = $parse($attrs.value)($scope);
                     ctrl.label = $parse($attrs.label)($scope);
                 }],
+            controllerAs: 'option',
             require: ['bgOption', '^bgSelector'],
             restrict: 'E',
-            template: '<div class="bg-selector-choice" ng-transclude></div>',
+            template: '<div class="bg-selector-choice"></div>',
             replace: true,
             transclude: true,
-            link: function ($scope, iElm, iAttrs, ctrls) {
+            link: function ($scope, iElm, iAttrs, ctrls, transcludeFn) {
                 var bgOption = ctrls[0];
                 var bgSelector = ctrls[1];
                 iElm.bind('click', function () {
@@ -156,6 +157,9 @@ define(['angular'], function (angular) {
                     }
                 });
                 bgSelector.addOption(bgOption.value);
+                transcludeFn(function (clone) {
+                    iElm.append(clone);
+                });
             }
         };
     }]);
