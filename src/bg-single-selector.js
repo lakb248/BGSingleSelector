@@ -73,7 +73,7 @@ define(['angular'], function (angular) {
                 var placeholder = iAttrs.placeholder || '请选择';
                 var choiceList = angular.element(iElm[0].querySelector('.bg-choice-list'));
                 var selectorBar = angular.element(iElm[0].querySelector('.bg-selector-bar'));
-                selector.onSelectCallback = $parse(iAttrs.onSelect)($scope);
+                selector.onSelectCallback = $parse(iAttrs.onSelect)($scope.$parent);
                 selectorBar.bind('click', function (e) {
                     selector.toggleChoiceList();
                     $scope.$apply();
@@ -102,6 +102,10 @@ define(['angular'], function (angular) {
                 };
                 selector.getValue = function () {
                     return ngModel.$modelValue;
+                };
+                selector.clearValue = function () {
+                    ngModel.$setViewValue(null);
+                    selector.setSelectorLabel(placeholder);
                 };
 
                 transcludeFn(function (clone) {
@@ -157,6 +161,16 @@ define(['angular'], function (angular) {
                     }
                 });
                 bgSelector.addOption(bgOption.value);
+                $scope.$watch(iAttrs.value, function (newValue, oldValue) {
+                    if (oldValue && newValue !== oldValue) {
+                        bgSelector.clearValue();
+                    }
+                });
+                $scope.$watch(iAttrs.label, function (newValue, oldValue) {
+                    if (oldValue && newValue !== oldValue) {
+                        bgSelector.clearValue();
+                    }
+                });
                 transcludeFn(function (clone) {
                     iElm.append(clone);
                 });
