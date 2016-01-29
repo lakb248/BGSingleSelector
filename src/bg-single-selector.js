@@ -90,19 +90,35 @@ define(['angular'], function (angular) {
                 $scope.$parent.$watch(iAttrs.ngModel, function (value) {
                     // reset the selector
                     if (!isExist(value, selector.options)) {
-                        selector.setSelectorLabel(placeholder);
+                        // selector.setSelectorLabel(placeholder);
+                        selector.clearValue();
+                        console.log('not exist');
                     } else {
                         $scope.$broadcast('bgs:change', value);
                     }
                 });
 
+                /**
+                 * set value and label of the selector
+                 * @param {Object} value the value to set
+                 * @param {string} label the label to set
+                 */
                 selector.setValue = function (value, label) {
                     ngModel.$setViewValue(value);
                     selector.setSelectorLabel(label);
                 };
+
+                /**
+                 * get the value of the selector
+                 * @return {Object} the value of the selector
+                 */
                 selector.getValue = function () {
                     return ngModel.$modelValue;
                 };
+
+                /**
+                 * clear the value of the selector
+                 */
                 selector.clearValue = function () {
                     ngModel.$setViewValue(null);
                     selector.setSelectorLabel(placeholder);
@@ -111,7 +127,9 @@ define(['angular'], function (angular) {
                 transcludeFn(function (clone) {
                     choiceList.append(clone);
                 });
-                selector.setSelectorLabel(placeholder);
+                // selector.setSelectorLabel(placeholder);
+                selector.clearValue();
+                console.log('init and clear value');
             }
         };
     }]);
@@ -163,11 +181,13 @@ define(['angular'], function (angular) {
                 bgSelector.addOption(bgOption.value);
                 $scope.$watch(iAttrs.value, function (newValue, oldValue) {
                     if (oldValue && newValue !== oldValue) {
+                        bgOption.value = newValue;
                         bgSelector.clearValue();
                     }
                 });
                 $scope.$watch(iAttrs.label, function (newValue, oldValue) {
                     if (oldValue && newValue !== oldValue) {
+                        bgOption.label = newValue;
                         bgSelector.clearValue();
                     }
                 });
