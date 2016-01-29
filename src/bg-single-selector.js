@@ -90,10 +90,9 @@ define(['angular'], function (angular) {
                 $scope.$parent.$watch(iAttrs.ngModel, function (value) {
                     // reset the selector
                     if (!isExist(value, selector.options)) {
-                        // selector.setSelectorLabel(placeholder);
-                        selector.clearValue();
-                        console.log('not exist');
+                        selector.setSelectorLabel(placeholder);
                     } else {
+                        console.log('change');
                         $scope.$broadcast('bgs:change', value);
                     }
                 });
@@ -127,9 +126,7 @@ define(['angular'], function (angular) {
                 transcludeFn(function (clone) {
                     choiceList.append(clone);
                 });
-                // selector.setSelectorLabel(placeholder);
-                selector.clearValue();
-                console.log('init and clear value');
+                selector.setSelectorLabel(placeholder);
             }
         };
     }]);
