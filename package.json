@@ -20,11 +20,27 @@
   },
   "homepage": "https://github.com/GaojingComponent/BGSingleSelector#readme",
   "devDependencies": {
+    "angular-mocks": "^1.4.9",
     "gulp": "^3.9.0",
     "gulp-ruby-sass": "^2.0.6",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp-uglifyjs": "^0.6.2",
-    "gulp-watch": "^4.3.5"
+    "gulp-watch": "^4.3.5",
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "jquery": "^2.2.0",
+    "karma": "^0.13.19",
+    "karma-benchmark-reporter": "^0.1.1",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-coverage": "^0.5.3",
+    "karma-jasmine": "^0.3.6",
+    "karma-requirejs": "^0.2.4",
+    "karma-spec-reporter": "0.0.23",
+    "karma-verbose-reporter": "0.0.3",
+    "requirejs": "^2.1.22"
+  },
+  "dependencies": {
+    "angular": "^1.4.9"
   }
 }

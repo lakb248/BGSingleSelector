@@ -1,11 +1,10 @@
-/**
+  /**
  * @file 单选下拉框组件
  * @author lakb248@gmail.com
  */
 
 define(['angular'], function (angular) {
     var bgs = angular.module('bg.selector', []);
-
     bgs.directive('bgSelector', ['$document', '$parse', function ($document, $parse) {
 
         /**
