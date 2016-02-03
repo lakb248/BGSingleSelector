@@ -1,0 +1,14 @@
+# node module #
+###############
+node_modules/
+###############
+
+# test coveage result #
+#######################
+test/coverage
+#######################
+
+# sass cache #
+##############
+.sass-cache/
+##############

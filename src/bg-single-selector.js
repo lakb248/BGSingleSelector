@@ -92,7 +92,6 @@ define(['angular'], function (angular) {
                     if (!isExist(value, selector.options)) {
                         selector.setSelectorLabel(placeholder);
                     } else {
-                        console.log('change');
                         $scope.$broadcast('bgs:change', value);
                     }
                 });
@@ -155,7 +154,7 @@ define(['angular'], function (angular) {
                     var value = bgOption.value;
                     var label = bgOption.label;
                     if (!label) {
-                        value = '请选择';
+                        label = '请选择';
                     }
                     // set the value and label of the selector when option clicked
                     bgSelector.setValue(value, label);
@@ -165,7 +164,7 @@ define(['angular'], function (angular) {
                         bgSelector.onSelectCallback(value, label);
                     }
                 });
-                if (bgOption.value === bgSelector.getValue()) {
+                if (angular.equals(bgOption.value, bgSelector.getValue())) {
                     bgSelector.setSelectorLabel(bgOption.label);
                 }
 
