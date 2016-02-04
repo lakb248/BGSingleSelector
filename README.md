@@ -1,6 +1,6 @@
 # BGSingleSelector
 
-[ ![Travis CI Status](https://travis-ci.org/GaojingComponent/BGSingleSelector.svg?branch=master)](https://travis-ci.org/GaojingComponent/BGSingleSelector)
+[ ![Travis CI Status](https://travis-ci.org/GaojingComponent/BGSingleSelector.svg?branch=master)](https://travis-ci.org/GaojingComponent/BGSingleSelector)    ![codecov.io](https://codecov.io/github/GaojingComponent/BGSingleSelector/branch.svg?branch=master)
 
 Simple single selector implements by AngularJS
 
