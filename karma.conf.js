@@ -47,6 +47,10 @@ module.exports = function(config) {
         }, {
             type: 'html',
             dir: 'test/coverage'
+        }, {
+            type: 'cobertura',
+            subdir: '.',
+            dir: 'test/coverage'
         }]
     },
 

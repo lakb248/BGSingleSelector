@@ -1,8 +1,8 @@
 # BGSingleSelector
 
-Simple single selector implements by AngularJS
-
 [ ![Travis CI Status](https://travis-ci.org/GaojingComponent/BGSingleSelector.svg?branch=master)](https://travis-ci.org/GaojingComponent/BGSingleSelector)
+
+Simple single selector implements by AngularJS
 
 ## Usage
 ```html

@@ -4,7 +4,8 @@
   "description": "single selector component",
   "main": "index.js",
   "scripts": {
-    "test": "karma start karma.conf.js"
+    "test": "karma start karma.conf.js",
+    "ci": "npm run test && codecov test/coverage/cobertura-coverage.xml"
   },
   "repository": {
     "type": "git",
