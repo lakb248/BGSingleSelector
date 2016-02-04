@@ -2,7 +2,7 @@
 
 Simple single selector implements by AngularJS
 
-![Travis CI Status](https://travis-ci.org/GaojingComponent/BGSingleSelector.svg?branch=master)
+[ ![Travis CI Status](https://travis-ci.org/GaojingComponent/BGSingleSelector.svg?branch=master)](https://travis-ci.org/GaojingComponent/BGSingleSelector)
 
 ## Usage
 ```html
