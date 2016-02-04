@@ -2,7 +2,7 @@
 
 [ ![Travis CI Status](https://travis-ci.org/GaojingComponent/BGSingleSelector.svg?branch=master)](https://travis-ci.org/GaojingComponent/BGSingleSelector)    [![codecov.io](https://codecov.io/github/GaojingComponent/BGSingleSelector/coverage.svg?branch=master)](https://codecov.io/github/GaojingComponent/BGSingleSelector?branch=master)
 
-Simple single selector implements by AngularJS
+Simple single selector implements by AngularJS,user by [BaiduGaojing](http://gaojing.baidu.com)
 
 ## Usage
 ```html
