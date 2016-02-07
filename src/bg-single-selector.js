@@ -174,12 +174,14 @@ define(['angular'], function (angular) {
                     }
                 });
                 bgSelector.addOption(bgOption.value);
+                // watch change of the value and reset the value of the selector
                 $scope.$watch(iAttrs.value, function (newValue, oldValue) {
                     if (oldValue && newValue !== oldValue) {
                         bgOption.value = newValue;
                         bgSelector.clearValue();
                     }
                 });
+                // watch change of the label and reset the value of the selector
                 $scope.$watch(iAttrs.label, function (newValue, oldValue) {
                     if (oldValue && newValue !== oldValue) {
                         bgOption.label = newValue;
